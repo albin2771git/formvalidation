@@ -1,5 +1,6 @@
 import 'package:app4_oct26/homePage.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class signUp2 extends StatefulWidget {
   const signUp2({super.key});
@@ -21,148 +22,170 @@ class _signUp2State extends State<signUp2> {
       ),
       body: Container(
         padding: EdgeInsets.only(left: 40, right: 40),
-        child: ListView(
-          children: [
-            SizedBox(
-              height: 60,
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                label: Text("enter your name"),
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(24)),
-              ),
-              validator: (name) {
-                if (name!.isEmpty || name.length < 3) {
-                  return "enter valid name";
-                } else {
-                  return null;
-                }
-              },
-            ),
+        child: Form(
+          key: formkey,
+          child: ListView(
+            children: [
               SizedBox(
-              height: 10,
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                label: Text("enter your email"),
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(24)),
+                height: 60,
               ),
-              validator: (email) {
-                if (email!.isEmpty || !email.contains("@") ) {
-                  return "enter valid email";
-                } else {
-                  return null;
-                }
-              },
-            ),
-              SizedBox(
-              height: 10,
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                label: Text("enter your phonenumber"),
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(24)),
-              ),
-              validator: (number) {
-                if (number!.isEmpty || number.length < 10) {
-                  return "enter valid phonenumber";
-                } else {
-                  return null;
-                }
-              },
-            ),
-              SizedBox(
-              height: 10,
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                label: Text("enter your username"),
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(24)),
-              ),
-              validator: (username) {
-                if (username!.isEmpty || username.length < 3) {
-                  return "enter valid username";
-                } else {
-                  return null;
-                }
-              },
-            ),
-              SizedBox(
-              height: 10,
-            ),
-            TextFormField(
-              obscureText: viewpassword,
-              decoration: InputDecoration(
-                suffixIcon: IconButton(onPressed: (){setState((){
-                  if(viewpassword){
-                    viewpassword=false;
-                  }else{
-                    viewpassword=true;
+              TextFormField(
+                decoration: InputDecoration(
+                  label: Text("enter your name"),
+                  border:
+                      OutlineInputBorder(borderRadius: BorderRadius.circular(24)),
+                ),
+                validator: (name) {
+                  if (name!.isEmpty || name.length < 3) {
+                    return "enter valid name";
+                  } else {
+                    return null;
                   }
-                });}, icon:Icon(viewpassword == true
-                        ? Icons.remove_red_eye
-                        : Icons
-                            .password), ),
-                label: Text("enter your password"),
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(24)),
+                },
+                textInputAction: TextInputAction.next,
               ),
-              validator: (password) {
-                if (password!.isEmpty || password.length < 3) {
-                  return "enter valid password";
-                } else {
-                  return null;
-                }
-              },
-            ),
-            SizedBox(height: 10,),
-             TextFormField(
-              obscureText: viewpassword,
-              decoration: InputDecoration(
-                suffixIcon: IconButton(onPressed: (){setState((){
-                  if(viewpassword){
-                    viewpassword=false;
-                  }else{
-                    viewpassword=true;
+                SizedBox(
+                height: 10,
+              ),
+              TextFormField(
+                decoration: InputDecoration(
+                  label: Text("enter your email"),
+                  border:
+                      OutlineInputBorder(borderRadius: BorderRadius.circular(24)),
+                ),
+                validator: (email) {
+                  if (email!.isEmpty || !email.contains("@") ) {
+                    return "enter valid email";
+                  } else {
+                    return null;
                   }
-                });}, icon:Icon(viewpassword == true
-                        ? Icons.remove_red_eye
-                        : Icons
-                            .password), ),
-                label: Text("conform your password"),
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(24)),
+                },
+                                textInputAction: TextInputAction.next,
+
               ),
-              validator: (conformpassword) {
-                if (conformpassword!.isEmpty || conformpassword.length < 3) {
-                  return "enter valid password";
-                } else {
-                  return null;
-                }
-              },
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 30, left: 80, right: 80),
-              child: ElevatedButton(
-                  style: ButtonStyle(
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(27)))),
-                  onPressed: () {
-                    final validate = formkey.currentState!.validate();
-                    if (validate) {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (ctx) => HomePage()));
-                    } else {
-                      print("signUp unsucessfull");
+                SizedBox(
+                height: 10,
+              ),
+              TextFormField(
+                decoration: InputDecoration(
+                  label: Text("enter your phonenumber"),
+                  border:
+                      OutlineInputBorder(borderRadius: BorderRadius.circular(24)),
+                ),
+                validator: (number) {
+                  if (number!.isEmpty || number.length < 10) {
+                    return "enter valid phonenumber";
+                  } else {
+                    return null;
+                  }
+                },
+                                textInputAction: TextInputAction.next,
+
+              ),
+                SizedBox(
+                height: 10,
+              ),
+              TextFormField(
+                decoration: InputDecoration(
+                  label: Text("enter your username"),
+                  border:
+                      OutlineInputBorder(borderRadius: BorderRadius.circular(24)),
+                ),
+                validator: (username) {
+                  if (username!.isEmpty || username.length < 3) {
+                    return "enter valid username";
+                  } else {
+                    return null;
+                  }
+                },
+                                textInputAction: TextInputAction.next,
+
+              ),
+                SizedBox(
+                height: 10,
+              ),
+              TextFormField(
+                obscureText: viewpassword,
+                decoration: InputDecoration(
+                  suffixIcon: IconButton(onPressed: (){setState((){
+                    if(viewpassword){
+                      viewpassword=false;
+                    }else{
+                      viewpassword=true;
                     }
-                  },
-                  child: Text("submit ")),
-            )
-          ],
+                  });}, icon:Icon(viewpassword == true
+                          ? Icons.remove_red_eye
+                          : Icons
+                              .password), ),
+                  label: Text("enter your password"),
+                  border:
+                      OutlineInputBorder(borderRadius: BorderRadius.circular(24)),
+                ),
+                validator: (password) {
+                  if (password!.isEmpty || password.length < 3) {
+                    return "enter valid password";
+                  } else {
+                    return null;
+                  }
+                },
+                                textInputAction: TextInputAction.next,
+
+              ),
+              SizedBox(height: 10,),
+               TextFormField(
+                obscureText: viewpassword,
+                decoration: InputDecoration(
+                  suffixIcon: IconButton(onPressed: (){setState((){
+                    if(viewpassword){
+                      viewpassword=false;
+                    }else{
+                      viewpassword=true;
+                    }
+                  });}, icon:Icon(viewpassword == true
+                          ? Icons.remove_red_eye
+                          : Icons
+                              .password), ),
+                  label: Text("conform your password"),
+                  border:
+                      OutlineInputBorder(borderRadius: BorderRadius.circular(24)),
+                ),
+                validator: (conformpassword) {
+                  if (conformpassword!.isEmpty || conformpassword.length < 3) {
+                    return "enter valid password";
+                  } else {
+                    return null;
+                  }
+                },
+                                textInputAction: TextInputAction.next,
+
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 30, left: 80, right: 80),
+                child: ElevatedButton(
+                    style: ButtonStyle(
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(27)))),
+                    onPressed: () {
+                      final validate = formkey.currentState!.validate();
+                      if (validate) {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (ctx) => HomePage()));
+                      } else {
+                        Fluttertoast.showToast(
+        msg: "enter valid details",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.TOP,
+       // timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0
+    );
+                      }
+                    },
+                    child: Text("submit ")),
+              )
+            ],
+          ),
         ),
       ),
     );

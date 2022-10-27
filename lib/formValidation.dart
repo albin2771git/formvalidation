@@ -1,5 +1,6 @@
 import 'package:app4_oct26/homePage.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class formValidation extends StatefulWidget {
   const formValidation({super.key});
@@ -70,7 +71,16 @@ class _formValidationState extends State<formValidation> {
                       if(valid){
                           Navigator.push(context, MaterialPageRoute(builder: (ctx)=>HomePage()));
                       }else{
-                         print("login failure");
+                        Fluttertoast.showToast(
+        msg: "Enter valid details",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.TOP,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0
+    );
+                         
                       }
 
 

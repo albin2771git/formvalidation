@@ -35,10 +35,10 @@ class splash extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 220),
             child: Text(
-              "CAR CARE",
+              "SPLASH SCREEN",
               style: TextStyle(
                   color: Color.fromARGB(255, 75, 77, 78),
-                  fontSize: 53,
+                  fontSize: 45,
                   fontWeight: FontWeight.bold),
             ),
           ),
@@ -67,7 +67,7 @@ class splash extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => signUpPage(),
+                          builder: (context) => signUp2(),
                         ));
                   },
                   child: Text("SignUp",
